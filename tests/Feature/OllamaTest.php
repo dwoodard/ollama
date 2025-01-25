@@ -2,14 +2,11 @@
 
 namespace Dwoodard\Ollama\Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
 class OllamaTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_ollama_route_exists()
     {
         // Ensure the route exists
@@ -53,7 +50,7 @@ class OllamaTest extends TestCase
         ]);
     }
 
-    public function test_ollama_generate_format_json_structured_outputs()
+    public function test_ollama_generate_format_json()
     {
         // Ensure the route returns a 200 status code
         $response = $this->postJson('/api/ollama/generate', [
