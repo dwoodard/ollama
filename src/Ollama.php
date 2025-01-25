@@ -15,6 +15,7 @@ class Ollama
 
     public function processText(string $text, string $model = 'llama3:8b')
     {
+
         $response = Http::post("{$this->apiUrl}/generate", [
             'model' => $model,
             'format' => 'json',
