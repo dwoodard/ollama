@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class OllamaController extends Controller
 {
-    public function process(Request $request)
+    public function generate(Request $request)
     {
         $validated = $request->validate([
             'model' => 'required|string',
@@ -24,7 +24,13 @@ class OllamaController extends Controller
         ], $validated));
 
         if ($response->successful()) {
-            return response()->json($response->json());
+            $data = $response->json();
+            return response()->json([
+                'model' => $data['model'] ?? $validated['model'],
+                'created_at' => now()->toIso8601String(),
+                'response' => $data['response'] ?? '',
+                'done' => $data['done'] ?? false,
+            ]);
         }
 
         return response()->json(['error' => 'Failed to process request'], 500);

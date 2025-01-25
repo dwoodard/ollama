@@ -13,7 +13,7 @@ class Ollama
         $this->apiUrl = rtrim($apiUrl, '/');
     }
 
-    public function processText(string $text, string $model = 'llama3:8b')
+    public function generate(string $text, string $model = 'llama3:8b')
     {
 
         $response = Http::post("{$this->apiUrl}/generate", [

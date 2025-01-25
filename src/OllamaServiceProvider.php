@@ -10,9 +10,9 @@ class OllamaServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/ollama.php', 'ollama');
 
-        $this->app->singleton('ollama', function () {
-            return new Ollama(config('ollama.api_url'));
-        });
+        // $this->app->singleton('ollama', function () {
+        //     return new Ollama(config('ollama.api_url'));
+        // });
     }
 
     public function boot()
@@ -26,5 +26,6 @@ class OllamaServiceProvider extends ServiceProvider
         $this->publishesMigrations([
             __DIR__.'/../database/migrations/' => database_path('migrations'),
         ], 'ollama-migrations');
+
     }
 }

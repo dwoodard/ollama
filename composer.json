@@ -1,6 +1,6 @@
 {
     "name": "dwoodard/ollama",
-    "description": "A package to integrate Ollama AI model with Laravel",
+    "description": "A Laravel package to interact with the Ollama API.",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,13 +9,20 @@
             "email": "dustin.woodard@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Dwoodard\\Ollama\\": "src/"
+        }
+    },
     "scripts": {
         "post-autoload-dump": [
             "@php artisan vendor:publish --tag=ollama-config --force"
         ]
     },
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "illuminate/support": "^11.0"
+    },
     "extra": {
         "laravel": {
             "providers": [
